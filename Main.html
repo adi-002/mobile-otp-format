@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opt Verification</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      body {
+        font-family: "Roboto Mono", monospace;
+      }
+
+      .main_pg {
+        text-align: center;
+        padding-top: 150px;
+        justify-content: space-between;
+      }
+      .heading {
+        color: green;
+      }
+      #btn {
+        font-size: 16px;
+        background-color: green;
+        margin: 15px 2px;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow: 0 8px 16px grey;
+        border-radius: 7px;
+      }
+      #btn:hover {
+        background-color: rgba(9, 194, 9, 0.986);
+      }
+      .inputField {
+        font-size: 25px;
+        padding: 12px;
+        border: none;
+        border-bottom: 2px solid grey;
+      }
+
+      .popUp-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 50%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s;
+      }
+      .opt_input {
+        max-width: 40px;
+        height: 40px;
+        border: none;
+        border-bottom: 2px solid grey;
+        margin-bottom: 30px;
+        margin-right: 12px;
+        text-align: center;
+      }
+
+      /* Add Animation */
+
+      @-webkit-keyframes animatetop {
+        from {
+          top: -300px;
+          opacity: 0;
+        }
+        to {
+          top: 0;
+          opacity: 1;
+        }
+      }
+
+      @keyframes animatetop {
+        from {
+          top: -300px;
+          opacity: 0;
+        }
+        to {
+          top: 0;
+          opacity: 1;
+        }
+      }
+
+      /* The Close Button */
+
+      .close {
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: red;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      /*The Popup Part*/
+
+      .popUp {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 180px;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+      .popUp-header {
+        padding: 2px 16px;
+        color: black;
+        text-align: center;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.733);
+      }
+
+      .popUp-body {
+        text-align: center;
+        padding: 2px 16px;
+      }
+
+      .popUp-footer {
+        padding: 2px 16px;
+        color: white;
+        text-align: center;
+      }
+      .popUp_btn {
+        background-color: blue;
+        border: none;
+        color: white;
+        text-align: center;
+        font-size: large;
+        padding: 15px;
+        border-radius: 65px;
+        box-shadow: 4px 4px 5px grey;
+        margin: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- First page -->
+
+    <div class="main_pg">
+      <h1 class="heading">Enter your Mobile Number</h1>
+      <input
+        type="text"
+        maxlength="10"
+        oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+        class="inputField"
+        placeholder="Mobile No."
+      />
+      <br />
+      <button id="btn">Genrate OTP</button>
+
+      <!-- Popup Window -->
+    </div>
+    <div id="popup" class="popUp">
+      <div class="popUp-content">
+        <div class="popUp-header">
+          <span class="close">&times;</span>
+          <h2>Mobile Verification</h2>
+        </div>
+        <div class="popUp-body">
+          <p>Enter the OTP you recived on <span id="mobileNumber"></span></p>
+
+          <!-- Input field for OTP -->
+
+          <div class="otp_container">
+            <input
+              type="text"
+              maxlength="1"
+              oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+              class="opt_input"
+              name="chars[1]"
+            />
+            <input
+              type="text"
+              maxlength="1"
+              oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+              class="opt_input"
+              name="chars[2]"
+            />
+            <input
+              type="text"
+              maxlength="1"
+              oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+              class="opt_input"
+              name="chars[3]"
+            />
+            <input
+              type="text"
+              maxlength="1"
+              oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+              class="opt_input"
+              name="chars[4]"
+            />
+            <input
+              type="text"
+              maxlength="1"
+              oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+              class="opt_input"
+              name="chars[5]"
+            />
+            <input
+              type="text"
+              maxlength="1"
+              oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+              class="opt_input"
+              name="chars[6]"
+            />
+          </div>
+        </div>
+        <div class="popUp-footer">
+          <button class="popUp_btn" onclick="thanxFn()">
+            Verify Mobile Number
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="Main.js"></script>
+    <script src="jquery-1.6.1.js"></script>
+  </body>
+</html>
